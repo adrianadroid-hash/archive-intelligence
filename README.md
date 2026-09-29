@@ -1,10 +1,10 @@
 # Archive Intelligence
 
-Local-first Python engine for inspecting personal chat export archives
-(ZIP exports) entirely on your own machine. It inventories an export,
-renders privacy-aware Phase 1 reports, verifies them, and builds a
-verified local Phase 2 structural index — with fail-closed checks at
-every step.
+Local-first Python engine for inspecting and structurally indexing
+ChatGPT export archives entirely on your own machine. It inventories
+the archive, renders privacy-aware Phase 1 reports, verifies them, and
+builds a verified local Phase 2 structural index — with fail-closed
+checks at every step.
 
 ## The problem it solves
 
