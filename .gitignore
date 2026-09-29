@@ -54,6 +54,7 @@ ENV/
 # --- Runtime / engine data (local only) ---
 outputs/
 output/
+STATUS.md
 staging/
 corpus/
 archive/
@@ -78,6 +79,9 @@ chatgpt*.zip
 *.chatgpt
 *.zip
 
+# --- Other private third-party material ---
+# Never commit such material here. A local working copy may extend this
+# with machine-local rules in .git/info/exclude (not published).
 
 # --- IDE / system / editor ---
 .vscode/
