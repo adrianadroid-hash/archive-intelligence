@@ -1,21 +1,20 @@
-"""Phase 1 report generation tests (path redaction, neutral sync, LF output).
+"""Phase 1 report generation and verification tests.
 
-Runs a direct synthetic intake → Phase 1 report-generation flow inside a
-throwaway temp workspace: the public package tree is copied to
-``<workspace>/src``, a fabricated fixture export plus config-only input is
-placed in the workspace, then ``python -m archive_intelligence.engine.
-inspect_archive`` and ``python -m archive_intelligence.engine.
-build_phase1_reports`` run as subprocesses from that tree (the module's ROOT
-resolves to the workspace root, mirroring the source-layout script posture).
-
-Proves the migrated P2-6/P1-5 generalization:
+Runs the full Phase 1 chain — inventory, report generation, Phase 1
+verification — as subprocesses inside a throwaway temp workspace (public
+package tree copied to ``<workspace>/src``, fabricated fixture export,
+config-only input) and proves:
 
 * reports never render the workspace root or the configured source path
   (M8: ``<source-archive>`` alias plus owner-verifiable location fingerprint);
 * no provider/environment-specific sync brand wording (M10: one neutral
   sync/backup caveat);
 * all four generated reports are LF-terminated (M23);
-* the public status title is ``Archive Intelligence``.
+* the public status title is ``Archive Intelligence``;
+* ``verify_phase1`` passes on correct outputs (PASS marker +
+  ``PHASE1_VALIDATION.json``);
+* ``verify_phase1`` fails closed on a missing or corrupted required
+  Phase 1 report (non-zero exit, no PASS).
 
 No real archive data is read; every write lands in the temp workspace.
 """
@@ -73,14 +72,19 @@ class TestPhase1ReportGeneration(unittest.TestCase):
         cls.run_module("inspect_archive")
         cls.reports_output = cls.run_module(
             "build_phase1_reports", marker="Phase 1 reports generated")
+        cls.verify_output = cls.run_module("verify_phase1", marker="PASS:")
 
     @classmethod
     def tearDownClass(cls):
         shutil.rmtree(cls.base, ignore_errors=True)
 
     @classmethod
-    def run_module(cls, module, marker=None):
-        """Run one engine module as ``python -m`` inside the copied tree."""
+    def run_module(cls, module, marker=None, expect_failure=False):
+        """Run one engine module as ``python -m`` inside the copied tree.
+
+        With ``expect_failure`` the run must exit non-zero and must not
+        emit ``marker`` (fail-closed proof); output is returned either way.
+        """
         env = dict(os.environ)
         env.pop("ENGINE_CONFIG", None)
         env.pop("PYTHONPATH", None)
@@ -92,6 +96,15 @@ class TestPhase1ReportGeneration(unittest.TestCase):
             env=env, capture_output=True, text=True, encoding="utf-8",
             errors="replace", timeout=600)
         output = (procedure.stdout or "") + (procedure.stderr or "")
+        if expect_failure:
+            if procedure.returncode == 0:
+                raise AssertionError(
+                    "%s unexpectedly succeeded\n%s" % (module, output[-4000:]))
+            if marker is not None and marker in output:
+                raise AssertionError(
+                    "%s failed but emitted marker %r\n%s"
+                    % (module, marker, output[-4000:]))
+            return output
         if procedure.returncode != 0:
             raise AssertionError(
                 "%s exited %d\n%s"
@@ -149,6 +162,51 @@ class TestPhase1ReportGeneration(unittest.TestCase):
                 self.assertTrue(data.endswith(b"\n"))
         first_line = self.read("STATUS.md").splitlines()[0]
         self.assertEqual(first_line, "# Status — Archive Intelligence")
+
+    def test_verify_phase1_passes_on_correct_outputs(self):
+        validation = json.loads(
+            (self.workspace / "outputs" / "PHASE1_VALIDATION.json")
+            .read_text(encoding="utf-8"))
+        self.assertEqual(validation["status"], "PASS")
+        self.assertTrue(validation["checks"])
+        self.assertTrue(all(c["passed"] for c in validation["checks"]))
+        self.assertIn("PASS:", self.verify_output)
+
+    def test_verify_phase1_fails_closed_on_missing_report(self):
+        target = self.workspace / "outputs" / "PROCESSING_PLAN.md"
+        original = target.read_bytes()
+        target.unlink()
+        try:
+            output = self.run_module("verify_phase1", marker="PASS:",
+                                     expect_failure=True)
+        finally:
+            target.write_bytes(original)
+        self.assertIn("PROCESSING_PLAN.md", output)
+
+    def test_verify_phase1_fails_closed_on_corrupted_report(self):
+        manifest = self.workspace / "outputs" / "ARCHIVE_MANIFEST.md"
+        inventory_path = self.workspace / "outputs" / "ARCHIVE_INVENTORY.json"
+        original_manifest = manifest.read_bytes()
+        original_inventory = inventory_path.read_bytes()
+        # corrupted (emptied) required report -> size check fails closed
+        manifest.write_bytes(b"")
+        try:
+            output = self.run_module("verify_phase1", marker="PASS:",
+                                     expect_failure=True)
+            self.assertIn("required output: ARCHIVE_MANIFEST.md", output)
+        finally:
+            manifest.write_bytes(original_manifest)
+        # corrupted inventory (broken reconciliation) -> assertion fails closed
+        tampered = json.loads(original_inventory.decode("utf-8"))
+        tampered["member_count"] += 1
+        inventory_path.write_text(
+            json.dumps(tampered, ensure_ascii=False), encoding="utf-8")
+        try:
+            output = self.run_module("verify_phase1", marker="PASS:",
+                                     expect_failure=True)
+            self.assertIn("member count reconciles", output)
+        finally:
+            inventory_path.write_bytes(original_inventory)
 
 
 if __name__ == "__main__":
