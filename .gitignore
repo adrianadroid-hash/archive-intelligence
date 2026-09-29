@@ -1,0 +1,90 @@
+# =====================================================================
+# archive-intelligence — defensive ignore rules
+# Purpose: make it structurally hard to commit secrets or private data.
+# If you need to track a file matched here, reconsider first.
+# =====================================================================
+
+# --- Secrets & environment ---
+.env
+.env.*
+!.env.example
+*.local.json
+*.local.*
+secrets/
+credentials/
+
+# --- Databases (never commit) ---
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.duckdb
+
+# --- Logs ---
+*.log
+logs/
+log/
+
+# --- Python caches & build artifacts ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Runtime / engine data (local only) ---
+outputs/
+output/
+staging/
+corpus/
+archive/
+archives/
+backups/
+*.bak
+*.tmp
+
+# --- ChatGPT export & chat-archive source data ---
+conversations.json
+conversation*.json
+message_feedback.json
+model_comparisons.json
+shared_conversations.json
+group_chats.json
+user.json
+settings.json
+files.json
+attachments.json
+chat.html
+chatgpt*.zip
+*.chatgpt
+*.zip
+
+
+# --- IDE / system / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
