@@ -4,8 +4,9 @@ from archive_intelligence import __version__
 
 
 def main() -> int:
-    """Skeleton entry point; replaces itself as real functionality lands."""
-    print(f"archive-intelligence {__version__} (skeleton)")
+    """Print the package version; the v0.1 pipeline runs via its engine
+    modules (see README.md)."""
+    print(f"archive-intelligence {__version__}")
     return 0
 
 
