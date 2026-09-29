@@ -1,0 +1,23 @@
+{
+  "$comment": "Neutral example configuration. Copy to engine_config.local.json (gitignored) and fill in your own values. Never commit real local paths in any committed profile.",
+  "profile": "example",
+  "source": {
+    "export_dir": null,
+    "export_zip": null
+  },
+  "paths": {
+    "staging": "staging",
+    "corpus": "corpus",
+    "outputs": "outputs",
+    "phase2": null,
+    "phase3": null,
+    "temp": ".work"
+  },
+  "expectations": {
+    "expected_root": null,
+    "min_free_bytes": 0
+  },
+  "runtime": {
+    "python_requires": ">=3.12,<3.15"
+  }
+}

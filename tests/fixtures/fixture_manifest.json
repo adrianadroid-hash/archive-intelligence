@@ -1,0 +1,263 @@
+{
+  "fixture_version": "synthetic-fixture-1.0",
+  "generator": "tests/fixtures/generate_fixture.py",
+  "content_policy": "All conversation content is fabricated. Synthetic test fixtures only.",
+  "synthetic_test_fixtures": true,
+  "zip": {
+    "filename": "synthetic_export.zip",
+    "bytes": 31886,
+    "sha256": "b7aff33f61b05fe6d73b18b60700318f4ed11025934b6136e5df20bba02a2e73",
+    "member_count": 21,
+    "compression": "stored"
+  },
+  "members": [
+    {
+      "ordinal": 0,
+      "name": "chat.html",
+      "bytes": 72,
+      "crc32": "da1c89c7",
+      "sha256": "1755f1822f165a89083bbf9f3ccd66928083cedfc2ff040fd1a62b0a2da9cf98"
+    },
+    {
+      "ordinal": 1,
+      "name": "user.json",
+      "bytes": 76,
+      "crc32": "6c7c5c76",
+      "sha256": "ac02830e0cc3083d3243ef145eb420e89eadb626562f160c051ff67089af6deb"
+    },
+    {
+      "ordinal": 2,
+      "name": "conversations-000.json",
+      "bytes": 17255,
+      "crc32": "ee21e0d8",
+      "sha256": "5f416be39c5d3beee5e64ad18edc0c287312d2bbf5350eeebf6598c77067f96e"
+    },
+    {
+      "ordinal": 3,
+      "name": "conversations-001.json",
+      "bytes": 8206,
+      "crc32": "fbb33f15",
+      "sha256": "9f2ca591d8f20584ac09eea5a36532c2ec0df3758e194194ba6036a9b1572f0a"
+    },
+    {
+      "ordinal": 4,
+      "name": "conversations-002.json",
+      "bytes": 3426,
+      "crc32": "e8082225",
+      "sha256": "1938d29f3a9dc7fe8fd6d431e430d5050c6a750370c2d180ae44be039f27f812"
+    },
+    {
+      "ordinal": 5,
+      "name": "settings.json",
+      "bytes": 38,
+      "crc32": "37c268fa",
+      "sha256": "0d2952c3eea556630db8153e3531f162e06746e6ae5925e145ee4600d57ffeb3"
+    },
+    {
+      "ordinal": 6,
+      "name": "model_comparisons.json",
+      "bytes": 3,
+      "crc32": "7068d244",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "ordinal": 7,
+      "name": "message_feedback.json",
+      "bytes": 3,
+      "crc32": "7068d244",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "ordinal": 8,
+      "name": "shared_conversations.json",
+      "bytes": 3,
+      "crc32": "7068d244",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "ordinal": 9,
+      "name": "group_chats.json",
+      "bytes": 3,
+      "crc32": "7068d244",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "ordinal": 10,
+      "name": "shopping.json",
+      "bytes": 3,
+      "crc32": "7068d244",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "ordinal": 11,
+      "name": "sora.json",
+      "bytes": 3,
+      "crc32": "7068d244",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "ordinal": 12,
+      "name": "files.json",
+      "bytes": 3,
+      "crc32": "7068d244",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "ordinal": 13,
+      "name": "attachments.json",
+      "bytes": 3,
+      "crc32": "7068d244",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "ordinal": 14,
+      "name": "manifest.json",
+      "bytes": 30,
+      "crc32": "6b0a57b9",
+      "sha256": "cbf979ca125ddf0ebdf3a6f42d20b2e8f52591d732f65f6589aecd3c98d57478"
+    },
+    {
+      "ordinal": 15,
+      "name": "export_metadata.json",
+      "bytes": 36,
+      "crc32": "73220236",
+      "sha256": "d32dc290f76cc6cf78b31fccf138385d60abb5fbb975a2c761461fa0af60a4a7"
+    },
+    {
+      "ordinal": 16,
+      "name": "private-notes-draft.png",
+      "bytes": 64,
+      "crc32": "d75385ca",
+      "sha256": "941ba72c4f8f39b383a7c41751fc29570de070aa195c3251e272333457d58a1a"
+    },
+    {
+      "ordinal": 17,
+      "name": "aux_names.json",
+      "bytes": 103,
+      "crc32": "54166e87",
+      "sha256": "cb77b0d1ff24e1e6267161f89e95ccc90e6472fedff72ced8f748c9207519891"
+    },
+    {
+      "ordinal": 18,
+      "name": "file_metadata.json",
+      "bytes": 116,
+      "crc32": "d3a3ec58",
+      "sha256": "6cdf32342f78fa2a8a8eaa95f333a7f087cc4717dedff3530b8f8bc59ddfdba9"
+    },
+    {
+      "ordinal": 19,
+      "name": "payload.dat",
+      "bytes": 64,
+      "crc32": "d75385ca",
+      "sha256": "941ba72c4f8f39b383a7c41751fc29570de070aa195c3251e272333457d58a1a"
+    },
+    {
+      "ordinal": 20,
+      "name": "payload.bundle",
+      "bytes": 74,
+      "crc32": "d252cc43",
+      "sha256": "a79ee5b6b36be56d275f22a7694e473e5d2fdfdcefe25058b35ce58df8422427"
+    }
+  ],
+  "shards": [
+    {
+      "ordinal": 0,
+      "name": "conversations-000.json",
+      "conversations": 6,
+      "encoding": "utf-8-raw"
+    },
+    {
+      "ordinal": 1,
+      "name": "conversations-001.json",
+      "conversations": 4,
+      "encoding": "utf-8-raw"
+    },
+    {
+      "ordinal": 2,
+      "name": "conversations-002.json",
+      "conversations": 2,
+      "encoding": "ascii-escaped"
+    }
+  ],
+  "expected_alias": {
+    "private-notes-draft.png": "entry-000016.png"
+  },
+  "graph_expectations": {
+    "all_conversations_anomaly_free": true
+  },
+  "sentinels": {
+    "S1": {
+      "value": "SYNTHETIC_TITLE_CANARY_ALPHA",
+      "fixture": true,
+      "location": "conversation title (duplicate-like conversation)"
+    },
+    "S2": {
+      "value": "SYNTHETIC_BODY_CANARY_BRAVO",
+      "fixture": true,
+      "location": "user message body"
+    },
+    "S3": {
+      "value": "sentinel.persona@example.invalid",
+      "fixture": true,
+      "location": "user message body",
+      "note": "RFC 2606 reserved .invalid domain; never a real address"
+    },
+    "S4": {
+      "value": "SYNTHETIC_PATH_CANARY_CHARLIE",
+      "fixture": true,
+      "location": "path-like string inside a message body"
+    },
+    "S5": {
+      "value": "private-notes-draft",
+      "fixture": true,
+      "location": "ZIP member name that must be aliased by intake"
+    },
+    "S6": {
+      "value": "SYNTHETIC_AUX_CANARY_DELTA",
+      "fixture": true,
+      "location": "auxiliary metadata dictionary value"
+    },
+    "S7": {
+      "value": "+000-000-00000",
+      "fixture": true,
+      "location": "phone-shaped string inside a message body",
+      "note": "all zeros; never a real number"
+    }
+  },
+  "totals": {
+    "active_nodes": 50,
+    "alternative_nodes": 4,
+    "branch_points": 3,
+    "branched_conversations": 3,
+    "conversations": 12,
+    "extra_branches": 4,
+    "messages": 42,
+    "nodes": 54
+  },
+  "roles": {
+    "assistant": 21,
+    "system": 1,
+    "tool": 1,
+    "unknown": 1,
+    "user": 18
+  },
+  "content_types": {
+    "code": 1,
+    "multimodal_text": 1,
+    "reasoning_recap": 1,
+    "text": 37,
+    "thoughts": 1,
+    "unknown": 1
+  },
+  "unknown_enum_values": {
+    "role": "unknown:c8efdfe8ac9ea1308f510420843ad8a1d4aa1c2d468a1ec335e32d1c7e4e99d1",
+    "content_type": "unknown:a5ec61bdaa52f1860a22b6ebef5da167e1672e14ce89d95e736dc864adc46f36"
+  },
+  "duplicates": {
+    "body_group_sizes": [
+      2
+    ],
+    "shared_conversation_id_group_sizes": [],
+    "shared_body_sha256": "d35c853840290c8c555527c5dec3ba9073caacb42798a3da682402e1a479a421"
+  }
+}
